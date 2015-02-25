@@ -149,11 +149,7 @@ class DetailsController extends Controller
 $a=$_GET['a'];
 echo($a);
     foreach ($enabledList as $item) {
-        global $a;
         if ($a=="1"){
-            global $a;
-        }
-        else {
             $queryString = "Test%5Blength%5D=".$item->length."&Test%5Bquantity%5D=".$item->quantity."&yt0=Create";
             echo "<pre>";
             print_r ($queryString);
@@ -171,6 +167,9 @@ echo($a);
             $item->save();
             curl_exec($ch);
             curl_close ($ch);
+        }
+        else {
+            break;
         }
     }
 }
