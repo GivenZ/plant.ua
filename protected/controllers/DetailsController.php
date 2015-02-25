@@ -121,7 +121,7 @@ class DetailsController extends Controller
 	}
 
     public function actionList() {
-        $this->curl();
+        //$this->curl();
 
 		$criteria=new CDbCriteria(array(
             'condition'=>'t.status=0',
@@ -133,46 +133,47 @@ class DetailsController extends Controller
 
         $enabledList = Details::model()->with('profile')->findAll($criteria);
 
-        echo "<pre>";
+        /*echo "<pre>";
         print_r ($enabledList);
-        echo "</pre>";
+        echo "</pre>";*/
 
             $queryString='';
-            /*foreach ($enabledList as $item) {
+            foreach ($enabledList as $item) {
 
                 $queryString = "Test%5Blength%5D=".$item->length."&Test%5Bquantity%5D=".$item->quantity."&yt0=Create";
         echo "<pre>";
         print_r ($queryString);
         echo "</pre>";
-            }*/
-/*
-foreach ($enabledList as $item) {
-    if ($sleep == 1) {
-//$f = file_get_content('control.txt');
-        $queryString = "Test%5Blength%5D=".$item->length."&Test%5Bquantity%5D=".$item->quantity."&yt0=Create";
-         echo "<pre>";
-        print_r ($queryString);
-        echo "</pre>";
-    if($queryString == 'sleep')
-    {
-        sleep(1000);
+        
+            }
+$a=$_GET['a'];
+echo($a);
+    foreach ($enabledList as $item) {
+        global $a;
+        if ($a=="1"){
+            global $a;
+        }
+        else {
+            $queryString = "Test%5Blength%5D=".$item->length."&Test%5Bquantity%5D=".$item->quantity."&yt0=Create";
+            echo "<pre>";
+            print_r ($queryString);
+            echo "</pre>";
+            $ch = curl_init();
+            sleep(5);
+            $url = "http://cms.ua/index.php/test/create";
+            curl_setopt($ch,CURLOPT_URL,$url);
+            curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
+            curl_setopt($ch,CURLOPT_POSTFIELDS,$queryString);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
+            curl_setopt($ch,CURLOPT_TIMEOUT, 20);
+            $item->status = '0';
+            $item->save();
+            curl_exec($ch);
+            curl_close ($ch);
+        }
     }
-        $ch = curl_init();
-        sleep(5);
-        $url = "http://cms.ua/index.php/test/create";
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_POST, 1);                //0 for a get request
-        curl_setopt($ch,CURLOPT_POSTFIELDS,$queryString);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT ,3);
-        curl_setopt($ch,CURLOPT_TIMEOUT, 20);
-        $item->status = '0';
-        $item->save();
-        curl_exec($ch);
-        curl_close ($ch);
-sleep(3);
-}*/
-} 
+}
 
     public function curl(){
 
