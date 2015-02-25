@@ -1,0 +1,10 @@
+{
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "require": {
+        "yiisoft/yii": ">=1.1.14",
+        "zhuravljov/yii2-debug": "dev-master"
+    },
+    "minimum-stability": "beta"
+}

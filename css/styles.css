@@ -1,0 +1,32 @@
+#page {
+    padding-top: 60px;
+}
+.show-grid {
+    margin-bottom: 15px;
+}
+#import
+{
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(0,0,0,0.02);
+    padding: 1em;
+	cursor: default;
+    min-height: 200px;
+    min-width: 430px;
+    border-radius: 3px;
+    background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.03);
+    padding: 80px 0;
+
+
+border: 3px dashed #CCC;
+border-radius: 3px;
+background-image: url("../images/here.jpg");
+background-repeat: no-repeat;
+background-position: center center;
+background-color: #EDEDED;
+cursor: pointer;
+}
